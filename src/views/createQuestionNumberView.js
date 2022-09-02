@@ -1,7 +1,7 @@
 'use strict';
 
 import { CURRENT_QUESTION_NUM_ID } from '../constants.js';
-import { currentQuestion } from '../pages/questionPage.js';
+import { questionCounter } from '../pages/questionPage.js';
 
 /**
  * Create a full question element
@@ -22,7 +22,7 @@ export const progressBar= (questionCounter,maxQuestions) => {
 
 export const UpdateQuestionNumber = () => {
 
-  document.getElementById(CURRENT_QUESTION_NUM_ID).innerText = currentQuestion;
+  document.getElementById(CURRENT_QUESTION_NUM_ID).innerText = questionCounter;
 }
 
 
