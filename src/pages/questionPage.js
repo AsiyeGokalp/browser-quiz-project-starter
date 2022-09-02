@@ -5,6 +5,7 @@ import {
   NEXT_QUESTION_BUTTON_ID,
   USER_INTERFACE_ID,
   CURRENT_SCORE_ID,
+  CURRENT_QUESTION_NUM_ID,
 } from '../constants.js';
 import {
   createQuestionElement,
@@ -14,6 +15,8 @@ import { createAnswerElement } from '../views/answerView.js';
 import { createScoreElement } from '../views/scoreView.js';
 import { updateScore } from '../views/scoreView.js';
 import { finalSummaryPage } from './finalSummaryPage.js';
+import { progressBar } from '../createQuestionNumberView.js';
+import { UpdateQuestionNumber } from '../createQuestionNumberView.js';
 import { quizData } from '../data.js';
 
 export const initQuestionPage = () => {
@@ -22,6 +25,8 @@ export const initQuestionPage = () => {
 
   userInterface.appendChild(createScoreElement(quizData.finalScore));
 
+  UpdateQuestionNumber();
+  userInterface.appendChild(progressBar(questionCounter,maxQuestions));
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
 
   const questionElement = createQuestionElement(currentQuestion.text);
