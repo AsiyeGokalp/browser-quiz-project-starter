@@ -7,6 +7,7 @@ export const createFinalSummaryElement = () => {
   element.innerHTML = `
     <h1>Congratulations ! you answered ${finalScore} from total ${questions.length} questions </h1>
     
+    <marquee  Scrollamount=15 direction=left>Congratulations ! You answered ${finalScore} correct from  ${questions.length} questions!</marquee>
   `;
   return element;
 };
