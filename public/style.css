@@ -19,3 +19,17 @@ ul {
 .hide {
   display: none;
 }
+.progressBar{
+  width: 20rem;
+  height: 1rem;
+  border: .2rem solid rgb(11,223,36);
+  margin-top: 2rem;
+  border-radius: 50px;
+  overflow: hidden;
+  }
+  
+  .progressBarFull{
+    height: 100%;
+    background:rgb(11,223,36) ;
+    width: 0%;
+  }

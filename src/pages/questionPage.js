@@ -31,6 +31,9 @@ export const initQuestionPage = () => {
 
   userInterface.appendChild(progressBar(questionCounter,maxQuestions));
 
+  userInterface.appendChild(progressBar())
+  document.querySelector(".progressBarFull").style.width=`${((quizData.currentQuestionIndex + 1)/quizData.questions.length)*100}%`
+
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
 
   const questionElement = createQuestionElement(currentQuestion.text);
