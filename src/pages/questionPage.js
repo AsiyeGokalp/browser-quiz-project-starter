@@ -5,6 +5,7 @@ import {
   NEXT_QUESTION_BUTTON_ID,
   USER_INTERFACE_ID,
   CURRENT_SCORE_ID,
+  CURRENT_QUESTION_NUM_ID,
 } from '../constants.js';
 import {
   createQuestionElement,
@@ -13,6 +14,7 @@ import {
 import { createAnswerElement } from '../views/answerView.js';
 import { createScoreElement } from '../views/scoreView.js';
 import { updateScore } from '../views/scoreView.js';
+import { progressBar } from '../views/createQuestionNumberView.js';
 import { finalSummaryPage } from './finalSummaryPage.js';
 import { quizData } from '../data.js';
 
@@ -20,16 +22,20 @@ export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
 
-  userInterface.appendChild(createScoreElement(quizData.finalScore));
+  userInterface.appendChild(createScoreElement());
+  userInterface.appendChild(progressBar());
 
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
 
   const questionElement = createQuestionElement(currentQuestion.text);
   userInterface.appendChild(questionElement);
 
-  const correctAnswer = (e) => {
-    if (!(currentQuestion['selected'] === null)) return;
-    const selectedAnswer = e.target;
+  const correctAnswer = (event) => {
+    if (!(currentQuestion['selected'] === null)) {
+      return;
+    }
+
+    const selectedAnswer = event.target;
     const correctAnswer = currentQuestion.correct;
 
     if (selectedAnswer.dataset.key === correctAnswer) {
@@ -43,6 +49,7 @@ export const initQuestionPage = () => {
 
     if (quizData.currentQuestionIndex === quizData.questions.length - 1) {
       finalSummaryPage();
+      return;
     }
 
     updateScore();
