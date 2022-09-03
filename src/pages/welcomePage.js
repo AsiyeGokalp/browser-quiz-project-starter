@@ -8,17 +8,11 @@ export const initWelcomePage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
 
-  const storedIndex = localStorage.getItem('currentQuestionIndex');
-
-  if (storedIndex) {
-    initQuestionPage();
-  } else {
-    const welcomeElement = createWelcomeElement();
-    userInterface.appendChild(welcomeElement);
-    document
-      .getElementById(START_QUIZ_BUTTON_ID)
-      .addEventListener('click', startQuiz);
-  }
+  const welcomeElement = createWelcomeElement();
+  userInterface.appendChild(welcomeElement);
+  document
+    .getElementById(START_QUIZ_BUTTON_ID)
+    .addEventListener('click', startQuiz);
 };
 
 const startQuiz = () => {
