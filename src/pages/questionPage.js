@@ -41,13 +41,16 @@ export const initQuestionPage = () => {
     if (selectedAnswer.dataset.key === correctAnswer) {
       selectedAnswer.classList.add('correct');
       quizData.finalScore++;
+      localStorage.setItem('finalScore', quizData.finalScore);
     } else {
       selectedAnswer.classList.add('wrong');
     }
 
     currentQuestion['selected'] = selectedAnswer.dataset.key;
+    localStorage.setItem('selectedAnswer', selectedAnswer.dataset.key);
 
     if (quizData.currentQuestionIndex === quizData.questions.length - 1) {
+      localStorage.clear();
       finalSummaryPage();
       return;
     }
@@ -65,6 +68,11 @@ export const initQuestionPage = () => {
     answersListElement.addEventListener('click', correctAnswer);
   }
 
+  answersListElement.addEventListener('click', (e) => {
+    correctAnswer(e);
+    
+  });
+
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
     .addEventListener('click', nextQuestion);
@@ -72,5 +80,7 @@ export const initQuestionPage = () => {
 
 const nextQuestion = () => {
   quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
+  localStorage.setItem('currentQuestionIndex', quizData.currentQuestionIndex);
+
   initQuestionPage();
 };

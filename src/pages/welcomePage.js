@@ -8,12 +8,16 @@ export const initWelcomePage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
 
-  const welcomeElement = createWelcomeElement();
-  userInterface.appendChild(welcomeElement);
-
-  document
-    .getElementById(START_QUIZ_BUTTON_ID)
-    .addEventListener('click', startQuiz);
+  const storedIndex = +localStorage.getItem('currentQuestionIndex');
+  if (storedIndex) {
+    initQuestionPage();
+  } else {
+    const welcomeElement = createWelcomeElement();
+    userInterface.appendChild(welcomeElement);
+    document
+      .getElementById(START_QUIZ_BUTTON_ID)
+      .addEventListener('click', startQuiz);
+  }
 };
 
 const startQuiz = () => {
