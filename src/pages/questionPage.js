@@ -6,12 +6,15 @@ import {
   USER_INTERFACE_ID,
   CURRENT_SCORE_ID,
 } from '../constants.js';
-import { createQuestionElement } from '../views/questionView.js';
+import {
+  createQuestionElement,
+  showNextQuestionButton,
+} from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
-import { quizData } from '../data.js';
 import { createScoreElement } from '../views/scoreView.js';
 import { updateScore } from '../views/scoreView.js';
 import { finalSummaryPage } from './finalSummaryPage.js';
+import { quizData } from '../data.js';
 
 export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
@@ -23,22 +26,6 @@ export const initQuestionPage = () => {
 
   const questionElement = createQuestionElement(currentQuestion.text);
   userInterface.appendChild(questionElement);
-
-  const answersListElement = document.getElementById(ANSWERS_LIST_ID);
-
-  for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
-    const answerElement = createAnswerElement(key, answerText);
-    answersListElement.appendChild(answerElement);
-  }
-
-  answersListElement.addEventListener('click', () => {
-    setTimeout(() => {
-      document.getElementById(NEXT_QUESTION_BUTTON_ID) &&
-        document
-          .getElementById(NEXT_QUESTION_BUTTON_ID)
-          .classList.remove('hide');
-    }, 300);
-  });
 
   const correctAnswer = (e) => {
     if (!(currentQuestion['selected'] === null)) return;
@@ -59,10 +46,17 @@ export const initQuestionPage = () => {
     }
 
     updateScore();
-
   };
 
-  answersListElement.addEventListener('click', correctAnswer);
+  const answersListElement = document.getElementById(ANSWERS_LIST_ID);
+
+  for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
+    const answerElement = createAnswerElement(key, answerText);
+    answersListElement.appendChild(answerElement);
+
+    answersListElement.addEventListener('click', showNextQuestionButton);
+    answersListElement.addEventListener('click', correctAnswer);
+  }
 
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
