@@ -7,23 +7,24 @@ import { quizData } from '../data.js';
  * Create a full question element
  * @returns {Element}
  */
-export const progressBar= (questionCounter,maxQuestions) => {
-  const element = document.createElement ('div');
+export const progressBar = () => {
+  const element = document.createElement('div');
+  // const storedCurrentQuestion = localStorage.getItem("currentIndex");
+  // if(!storedCurrentQuestion) return;
+  //quizData.currentQuestionIndex=+storedCurrentQuestion
 
   element.innerHTML = String.raw`
   
-  <p> Question <span id='${CURRENT_QUESTION_NUM_ID}'> ${questionCounter} </span> of <span> ${maxQuestions} </span></p>
+  <p> Question <span id='${CURRENT_QUESTION_NUM_ID}'> ${
+    quizData.currentQuestionIndex + 1
+  } </span> of <span> ${quizData.questions.length} </span></p>
    <div class='progressBarFull ></div>
   `;
-  
-  return element;
 
+  return element;
 };
 
 export const UpdateQuestionNumber = () => {
-
-  document.getElementById(CURRENT_QUESTION_NUM_ID).innerText = quizData.currentQuestionIndex;
-}
-
-
-
+  document.getElementById(CURRENT_QUESTION_NUM_ID).innerText =
+    quizData.currentQuestionIndex;
+};
