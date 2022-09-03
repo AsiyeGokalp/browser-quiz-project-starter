@@ -18,8 +18,6 @@ import { progressBar } from '../views/createQuestionNumberView.js';
 import { finalSummaryPage } from './finalSummaryPage.js';
 import { quizData } from '../data.js';
 
-const answers = [];
-
 export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
@@ -28,9 +26,16 @@ export const initQuestionPage = () => {
   userInterface.appendChild(progressBar());
 
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
+  localStorage.setItem('currentQuestionIndex', quizData.currentQuestionIndex);
 
   const questionElement = createQuestionElement(currentQuestion.text);
   userInterface.appendChild(questionElement);
+
+  const answers = JSON.parse(localStorage.getItem('selectedAnswers'));
+  if (answers[quizData.currentQuestionIndex]) {
+    currentQuestion['selected'] = answers[quizData.currentQuestionIndex];
+    showNextQuestionButton();
+  }
 
   const correctAnswer = (event) => {
     if (!(currentQuestion['selected'] === null)) {
@@ -43,13 +48,15 @@ export const initQuestionPage = () => {
     if (selectedAnswer.dataset.key === correctAnswer) {
       selectedAnswer.classList.add('correct');
       quizData.finalScore++;
+
       localStorage.setItem('finalScore', quizData.finalScore);
     } else {
       selectedAnswer.classList.add('wrong');
     }
 
     currentQuestion['selected'] = selectedAnswer.dataset.key;
-    answers.push({ [quizData.currentQuestionIndex]: e.target.dataset.key });
+
+    answers.push(selectedAnswer.dataset.key);
     localStorage.setItem('selectedAnswers', JSON.stringify(answers));
 
     if (quizData.currentQuestionIndex === quizData.questions.length - 1) {
@@ -78,7 +85,6 @@ export const initQuestionPage = () => {
 
 const nextQuestion = () => {
   quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
-  localStorage.setItem('currentQuestionIndex', quizData.currentQuestionIndex);
 
   initQuestionPage();
 };
