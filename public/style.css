@@ -27,6 +27,7 @@
   padding: 2rem; 
   margin-top: 40px;
 }
+
 #start-quiz-button,
 #next-question-button,
 li {
@@ -77,7 +78,7 @@ ul {
   border-radius: 4px;
   
   font-size: 3rem;
-  min-width: 80rem;
+  min-width: 40rem;
 }
 
 li {
@@ -132,6 +133,25 @@ p {
 
 .centered div p:hover {
   scale: 1.5;
+}
+
+div h1.final {
+  color: pink;
+  font-size: 2.5rem;
+  animation-direction:normal;
+  animation-name: rightToLeft;
+  animation-duration: 4.5s;
+  animation-timing-function:  cubic-bezier(0.1, 0.7, 1.0, 0.1);
+  animation-iteration-count: 0.8;
+}
+
+@keyframes rightToLeft {
+  0% {
+    transform: translateX(200px);
+  }
+  100% {
+    transform: translateX(-160px);
+  }
 }
 
 .correct {
