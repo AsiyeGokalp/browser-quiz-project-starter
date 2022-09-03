@@ -27,6 +27,7 @@ export const createQuestionElement = (question) => {
 
 export const showNextQuestionButton = () => {
   setTimeout(() => {
-    document.getElementById(NEXT_QUESTION_BUTTON_ID) && document.getElementById(NEXT_QUESTION_BUTTON_ID).classList.remove('hide');
+    document.getElementById(NEXT_QUESTION_BUTTON_ID) &&
+      document.getElementById(NEXT_QUESTION_BUTTON_ID).classList.remove('hide');
   }, 300);
 };

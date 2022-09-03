@@ -10,7 +10,6 @@ export const initWelcomePage = () => {
 
   const welcomeElement = createWelcomeElement();
   userInterface.appendChild(welcomeElement);
-
   document
     .getElementById(START_QUIZ_BUTTON_ID)
     .addEventListener('click', startQuiz);
