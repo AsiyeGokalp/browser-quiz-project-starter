@@ -21,7 +21,7 @@ import { quizData } from '../data.js';
 export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
-
+ 
   userInterface.appendChild(createScoreElement());
   userInterface.appendChild(progressBar());
 
@@ -48,7 +48,7 @@ export const initQuestionPage = () => {
     if (selectedAnswer.dataset.key === correctAnswer) {
       selectedAnswer.classList.add('correct');
       quizData.finalScore++;
-
+      
       localStorage.setItem('finalScore', quizData.finalScore);
     } else {
       selectedAnswer.classList.add('wrong');
@@ -74,8 +74,8 @@ export const initQuestionPage = () => {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
 
-    answersListElement.addEventListener('click', showNextQuestionButton);
-    answersListElement.addEventListener('click', correctAnswer);
+    answerElement.addEventListener('click', showNextQuestionButton);
+    answerElement.addEventListener('click', correctAnswer);
   }
 
   document
