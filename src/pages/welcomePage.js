@@ -9,6 +9,7 @@ export const initWelcomePage = () => {
   userInterface.innerHTML = '';
 
   const storedIndex = +localStorage.getItem('currentQuestionIndex');
+
   if (storedIndex) {
     initQuestionPage();
   } else {

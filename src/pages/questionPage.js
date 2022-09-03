@@ -68,11 +68,6 @@ export const initQuestionPage = () => {
     answersListElement.addEventListener('click', correctAnswer);
   }
 
-  answersListElement.addEventListener('click', (e) => {
-    correctAnswer(e);
-    
-  });
-
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
     .addEventListener('click', nextQuestion);
