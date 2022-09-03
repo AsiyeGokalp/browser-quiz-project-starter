@@ -21,7 +21,6 @@ import { UpdateQuestionNumber } from '../createQuestionNumberView.js';
 import { finalSummaryPage } from './finalSummaryPage.js';
 import { quizData } from '../data.js';
 
-const audio = new Audio('correct.mp3');
 export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
@@ -45,7 +44,6 @@ export const initQuestionPage = () => {
     if (selectedAnswer.dataset.key === correctAnswer) {
       selectedAnswer.classList.add('correct');
       quizData.finalScore++;
-      audio.play();
     } else {
       selectedAnswer.classList.add('wrong');
     }
