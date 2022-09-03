@@ -18,6 +18,8 @@ import { progressBar } from '../views/createQuestionNumberView.js';
 import { finalSummaryPage } from './finalSummaryPage.js';
 import { quizData } from '../data.js';
 
+const answers = [];
+
 export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
@@ -47,7 +49,8 @@ export const initQuestionPage = () => {
     }
 
     currentQuestion['selected'] = selectedAnswer.dataset.key;
-    localStorage.setItem('selectedAnswer', selectedAnswer.dataset.key);
+    answers.push({ [quizData.currentQuestionIndex]: e.target.dataset.key });
+    localStorage.setItem('selectedAnswers', JSON.stringify(answers));
 
     if (quizData.currentQuestionIndex === quizData.questions.length - 1) {
       localStorage.clear();

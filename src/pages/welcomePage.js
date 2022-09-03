@@ -8,7 +8,7 @@ export const initWelcomePage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
 
-  const storedIndex = +localStorage.getItem('currentQuestionIndex');
+  const storedIndex = localStorage.getItem('currentQuestionIndex');
 
   if (storedIndex) {
     initQuestionPage();

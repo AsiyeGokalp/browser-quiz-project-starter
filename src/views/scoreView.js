@@ -6,6 +6,10 @@ import { quizData } from '../data.js';
 export const createScoreElement = () => {
   const element = document.createElement('div');
 
+  const storedFinalScore = localStorage.getItem('finalScore');
+  if (storedFinalScore) {
+    quizData.finalScore = +storedFinalScore;
+  }
   element.innerHTML = String.raw`
    <p> Score : <span class='score' id='${CURRENT_SCORE_ID}'>${quizData.finalScore}</span></p>
   `;
