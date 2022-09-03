@@ -62,7 +62,9 @@ export const initQuestionPage = () => {
 
   };
 
-  answersListElement.addEventListener('click', correctAnswer);
+  document.querySelectorAll("#answers-list li").forEach(item=>{
+  item.addEventListener('click', correctAnswer);
+  })
 
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
