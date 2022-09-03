@@ -14,10 +14,10 @@ import {
 import { createAnswerElement } from '../views/answerView.js';
 import { createScoreElement } from '../views/scoreView.js';
 import { updateScore } from '../views/scoreView.js';
+import { progressBar } from '../views/createQuestionNumberView.js';
 import { finalSummaryPage } from './finalSummaryPage.js';
 import { progressBar } from '../createQuestionNumberView.js';
 import { UpdateQuestionNumber } from '../createQuestionNumberView.js';
-import { progressBar } from '../views/createQuestionNumberView.js';
 import { finalSummaryPage } from './finalSummaryPage.js';
 import { quizData } from '../data.js';
 
