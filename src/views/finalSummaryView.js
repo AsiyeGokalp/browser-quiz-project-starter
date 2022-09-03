@@ -5,8 +5,7 @@ export const createFinalSummaryElement = () => {
 
   const element = document.createElement('div');
   element.innerHTML = `
-    <h1>Congratulations ! you answered ${finalScore} from total ${questions.length} questions </h1>
-    
+    <h1 class='final'>Congratulations ! You answered ${finalScore} correct from  ${questions.length} questions!</h1>
   `;
   return element;
 };
