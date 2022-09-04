@@ -21,7 +21,7 @@ import { quizData } from '../data.js';
 export const initQuestionPage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
- 
+
   userInterface.appendChild(createScoreElement());
   userInterface.appendChild(progressBar());
 
@@ -48,7 +48,7 @@ export const initQuestionPage = () => {
     if (selectedAnswer.dataset.key === correctAnswer) {
       selectedAnswer.classList.add('correct');
       quizData.finalScore++;
-      
+
       localStorage.setItem('finalScore', quizData.finalScore);
     } else {
       selectedAnswer.classList.add('wrong');
