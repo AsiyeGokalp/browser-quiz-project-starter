@@ -74,8 +74,8 @@ export const initQuestionPage = () => {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
 
-    answersListElement.addEventListener('click', showNextQuestionButton);
-    answersListElement.addEventListener('click', correctAnswer);
+    answerElement.addEventListener('click', showNextQuestionButton);
+    answerElement.addEventListener('click', correctAnswer);
   }
 
   document

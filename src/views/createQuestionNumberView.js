@@ -16,7 +16,7 @@ export const progressBar = () => {
   }%`;
 
   element.innerHTML = String.raw`
-    <p>Question <span id='${CURRENT_QUESTION_NUM_ID}'>${
+    <p class="progressBar-text">Question <span id='${CURRENT_QUESTION_NUM_ID}'>${
     quizData.currentQuestionIndex + 1
   }</span> of <span> ${quizData.questions.length}</span>
     </p>
